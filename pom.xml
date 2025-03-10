@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>CucumberJava</groupId>
+  <artifactId>CucumberJava</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <!-- Cucumber Java -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>7.21.1</version>
+    </dependency>
+
+    <!-- Cucumber JUnit -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>7.21.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JUnit 4 -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JUnit 4 Compatibility with JUnit 5 -->
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <version>5.9.3</version>  <!-- Ensures compatibility -->
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- Cucumber JUnit 5 (JUnit Platform Engine) -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit-platform-engine</artifactId>
+      <version>7.21.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JUnit 5 -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.9.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.9.3</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Selenium WebDriver -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.28.0</version>
+    </dependency>
+
+    <!-- Java Native Access (JNA) -->
+    <dependency>
+      <groupId>net.java.dev.jna</groupId>
+      <artifactId>jna</artifactId>
+      <version>5.13.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter -->
+<dependency>
+    <groupId>tech.grasshopper</groupId>
+    <artifactId>extentreports-cucumber7-adapter</artifactId>
+    <version>1.14.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+<dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>5.1.2</version>
+</dependency>
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-picocontainer</artifactId>
+    <version>7.11.0</version> <!-- Use the latest version -->
+</dependency>
+
+  
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Maven Compiler Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>11</release>  <!-- Correct Java version -->
+        </configuration>
+      </plugin>
+
+      <!-- Maven Surefire Plugin (Runs Cucumber Tests) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+			
+          <includes>
+            <include>**/MochaTestRunner.java</include>  <!-- Ensure TestRunner executes -->
+          </includes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
