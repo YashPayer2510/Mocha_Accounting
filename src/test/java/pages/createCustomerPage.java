@@ -27,7 +27,7 @@ public class createCustomerPage {
 	By inpnum_MobileNumber = By.xpath("//input[@label='Mobile Number']");
 	By inpnum_Fax = By.xpath("//input[@label='Fax']");
 	By inp_Other = By.xpath("//input[@label='Other']");
-	By inp_website = By.xpath("//input[@label='Website']");
+	By inp_Website = By.xpath("//input[@label='Website']");
 	By inptxt_NameToPrintOnChecks = By.xpath("//input[@name='contact_infos.name_on_checks']");
 	By dd_GSTTreatment = By.xpath("//select[@label='GST treatment']");
 	//Billing Address
@@ -149,13 +149,93 @@ public class createCustomerPage {
 	    }
 	}
 	
+	public void PhoneNumber (String phonenumber) {
+		WebElement elePhoneNumber = driver.findElement(inpnum_PhoneNumber);
+		scrollToElement(elePhoneNumber);
+		elePhoneNumber.sendKeys(phonenumber);
+	}
 	
+	public void MobileNumber (String mobilenumber) {
+		WebElement eleMobileNumber = driver.findElement(inpnum_MobileNumber);
+		scrollToElement(eleMobileNumber);
+		eleMobileNumber.sendKeys(mobilenumber);
+	}
 	
+	public void Fax (String fax) {
+		WebElement eleFax = driver.findElement(inpnum_Fax);
+		scrollToElement(eleFax);
+		eleFax.sendKeys(fax);
+	}
 	
+	public void Other (String other) {
+		WebElement eleOther = driver.findElement(inp_Other);
+		scrollToElement(eleOther);
+		eleOther.sendKeys(other);
+	}
+	
+	public void Website (String website) {
+		WebElement eleWebsite = driver.findElement(inp_Website);
+		scrollToElement(eleWebsite);
+		eleWebsite.sendKeys(website);
+	}
+	
+	public void NameToPrintOnChecks (String nametoprintonchecks) {
+		WebElement eleNameToPrintOnChecks = driver.findElement(inptxt_NameToPrintOnChecks);
+		scrollToElement(eleNameToPrintOnChecks);
+		eleNameToPrintOnChecks.sendKeys(nametoprintonchecks);
+	}
+	
+	public void GSTTreatment(String gsttreatment) throws InterruptedException {
+		WebElement eleGSTTreatment = driver.findElement(dd_GSTTreatment);
+		scrollToElement(eleGSTTreatment);
+		eleGSTTreatment.click();
+//		eleGSTTreatment.
+	     
+	}
+	
+	public void BillingEnterManually() {
+		WebElement eleBillingEnterManually = driver.findElement(btn_Billing_EnterManually);
+		scrollToElement(eleBillingEnterManually);
+		eleBillingEnterManually.click();
+		}
+	
+	public void Billing (String billing) throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    WebElement billingDropdown = driver.findElement(inp_Billing);
+	    scrollToElement(billingDropdown);
+	    billingDropdown.click();
+	    billingDropdown.sendKeys(billing);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]")));
+	    List<WebElement> billingOptions = driver.findElements(By.xpath("/html/body/div[2]"));
+	    WebElement bestMatch = null;
 
+	    for (WebElement option : billingOptions) {
+	        String optionText = option.getText().trim();
+	        
+	        // Check if the option contains the desired text
+	        if (optionText.toLowerCase().contains(billing.toLowerCase())) {
+	            bestMatch = option; // Store the best match
+	            break;
+	        }
+	    }
 
+	    // Click the best match if found
+	    if (bestMatch != null) {
+	        bestMatch.click();
+	     
+	    }
+	    
+	}
+	
+	public void BillingCountry (String billingcountry) throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    WebElement billingcountryDropdown = driver.findElement(dd_BillingCountry);
+	    scrollToElement(billingcountryDropdown);
+	    billingcountryDropdown.click();
+	    billingcountryDropdown.sendKeys(billingcountry);
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]")));
+	    List<WebElement> billingcountryOptions = driver.findElements(By.xpath("/html/body/div[2]"));
+	    WebElement bestMatch = null;
 
-
-
-
+	}
 }
