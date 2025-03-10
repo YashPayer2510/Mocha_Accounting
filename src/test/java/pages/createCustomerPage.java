@@ -190,6 +190,7 @@ public class createCustomerPage {
 		scrollToElement(eleGSTTreatment);
 		eleGSTTreatment.click();
 //		eleGSTTreatment.
+		//testing
 	     
 	}
 	
